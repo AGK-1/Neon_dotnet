@@ -14,7 +14,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["SQLE-sam/SQLE-sam.csproj", "SQLE-sam/"]
+COPY ["SQLE_sam/SQLE-sam.csproj", "SQLE-sam/"]
 RUN dotnet restore "./SQLE_sam/SQLE-sam.csproj"
 COPY . .
 WORKDIR "/src/SQLE-sam"
