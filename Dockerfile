@@ -15,7 +15,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["SQLE-sam/SQLE-sam.csproj", "SQLE-sam/"]
-RUN dotnet restore "./SQLE-sam/SQLE-sam.csproj"
+RUN dotnet restore "./SQLE_sam/SQLE-sam.csproj"
 COPY . .
 WORKDIR "/src/SQLE-sam"
 RUN dotnet build "./SQLE-sam.csproj" -c %BUILD_CONFIGURATION% -o /app/build
