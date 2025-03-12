@@ -22,7 +22,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(); // Activate Swagger UI
 }
 
-app.UseHttpsRedirection(); // Ensure HTTPS redirection happens only once
+// Explicitly specify the HTTPS port to avoid the warning
+app.UseHttpsRedirection(options =>
+{
+    options.HttpsPort = 443; // Explicitly set the HTTPS port
+});
+
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
