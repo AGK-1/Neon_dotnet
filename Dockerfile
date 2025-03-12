@@ -1,12 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-# Укажите правильный путь к файлу проекта
-COPY SQLE_sam/SQLE-sam.csproj ./
+# Копируем все файлы проекта сразу
+COPY . ./
 RUN dotnet restore
 
-# Копируем остальные файлы проекта
-COPY SQLE_sam/ ./
+# Компилируем проект
 RUN dotnet publish -c Release -o out
 
 # Образ для запуска
@@ -18,4 +17,5 @@ EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://+:80
 
+# Замените 'YourProjectName' на имя вашего проекта
 ENTRYPOINT ["dotnet", "SQLE-sam.dll"]
