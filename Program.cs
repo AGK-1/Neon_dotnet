@@ -13,23 +13,18 @@ builder.Services.AddHttpsRedirection(options => { options.HttpsPort = 443; });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Postgress API", Version = "v1" });
-});
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Swagger UI və Swagger JSON aktivləşdirilməsi
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(); // Swagger UI aktivləşdirilir
 }
 
-// Раскомментируйте следующую строку, если вам нужно HTTPS перенаправление
-// app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
