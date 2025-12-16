@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
-# 55 50 53
+# 55 50 54
 # Копируем все файлы проекта сразу1291
 COPY . ./
 RUN dotnet restore
